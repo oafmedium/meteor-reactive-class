@@ -1,4 +1,6 @@
 # Reactive Class for Meteor
+This repository is a fork of [lingz/meteor-reactive-class](https://github.com/lingz/meteor-reactive-class)
+
 
 Reactive classes with data backed by Meteor collections! Allows for simple two
 way data binding, as well as for Object Oriented Programming without losing
@@ -12,12 +14,11 @@ changes in the DB, and `.refresh()` to get changes in the DB onto the local
 object! Alternatively, use the polling mode, and have the objects listen for
 mongoDB updates, and update themselves reactively.
 
-[![Build Status](https://travis-ci.org/lingz/meteor-reactive-class.svg)](https://travis-ci.org/lingz/meteor-reactive-class)
+[![Build Status](https://travis-ci.org/oafmedium/meteor-reactive-class.svg)](https://travis-ci.org/oafmedium/meteor-reactive-class)
 
 ## Install
 
-1. Install [Meteorite](https://github.com/oortcloud/meteorite/)
-2. `mrt add reactive-class`
+`meteor add oaf:reactive-class`
 
 ## Example
 
@@ -37,7 +38,7 @@ Post.prototype.getName = function() {
 Easily create a local object and put it into the DB.
 ```javascript
 post = new Post({name: "My Cool Post"})
-console.log(post) 
+console.log(post)
 >> {name: "My Cool Post"}
 
 post.put();
@@ -67,7 +68,7 @@ PostCollection.update({name: "My Cool Post"},
   {
     "$set": {name: "My Very Cool Post"}
   }
-); 
+);
 post.refresh();
 console.log(post.name);
 >> Name changed, it is now: My Very Cool Post // Invalidated autorun
@@ -230,7 +231,7 @@ console.log(post);
 ```
 
 The other option is to use `.poll()`, where the object will listen for changes
-from the DB. 
+from the DB.
 
 **Warning:** Use with care and only if you know what you're doing. When an
 object is polling, it **cannot be garbage collected**.
@@ -327,7 +328,7 @@ You may want to use reactive or non-reactive queries depending on whether you
 want to maintain state on the object itself. Reactive queries have the
 advantage that your object data is always on the live-data. However, they have
 the disadvantage of destroying the reference to the old object, so it cannot
-maintain any sort of state. 
+maintain any sort of state.
 
 #### Reactive Query
 ```javascript
@@ -485,4 +486,3 @@ Signature | Return | Explanation
 `.depend()` | this | Makes the current computation reactively track this object.
 `.poll()` | computation | Tells an object to watch the database for updates. Returns a computation object, with a `.stop()` method to end the `.poll()`. Polling objects cannot be garbage collected.
 `.stopPoll()` | this | Tells an object to stop polling and allows it to be garbage collected again.
-
