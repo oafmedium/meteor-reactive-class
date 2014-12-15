@@ -29,7 +29,7 @@ ReactiveClass = function(collection, opts) {
     ReactiveClass.initialize.call(this);
   };
 
-  if (!collection || !(collection instanceof Meteor.Collection))
+  if (!collection)
     throw new Meteor.Error(500,
       "You must pass in a valid Meteor.Collection"
     );
