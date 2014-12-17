@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Reactive Base class for building objects backed by Collection data",
-  version: '1.2.1',
+  version: '1.2.2',
   name: "oaf:reactive-class",
   git: 'https://github.com/oafmedium/meteor-reactive-class',
 });

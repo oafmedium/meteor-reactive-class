@@ -336,6 +336,8 @@ ReactiveClass = function(collection, opts) {
           });
         })
       }else{
+        if(!idField || _.isEmpty(idField)) return;
+
         var item = elm.collection.findOne(idField);
         if(!item) return;
         objectAtPath(self, elm.objField, function(obj,path) {
