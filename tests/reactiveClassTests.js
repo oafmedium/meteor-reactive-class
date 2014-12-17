@@ -474,7 +474,7 @@ Tinytest.add("ReactiveClass - Expanding to subobject", function(test) {
   var PostCollection = new Meteor.Collection(null);
   var Post = new ReactiveClass(PostCollection, {
     expand: {
-      idField: 'categoryIds',
+      idField: 'categoryId',
       objField: 'props.category',
       collection: CategoryCollection
     }
