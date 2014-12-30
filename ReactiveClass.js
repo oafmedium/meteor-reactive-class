@@ -169,10 +169,10 @@ ReactiveClass = function(collection, opts) {
   };
 
   //resolve object path
-  var resolveObj = function(path, obj) {
+  var resolveObj = function(path, obj, ensure) {
     return [obj].concat(path.split('.')).reduce(function(prev, curr) {
       if(prev) {
-        if(!prev[curr]) prev[curr] = {};
+        if(ensure && !prev[curr]) prev[curr] = {};
         return prev[curr];
       }
     });
@@ -183,7 +183,7 @@ ReactiveClass = function(collection, opts) {
     var lastPath = pathArray.pop();
     var objAtPath = obj;
     if (pathArray.length > 0) {
-      objAtPath = resolveObj(pathArray.join('.'), obj);
+      objAtPath = resolveObj(pathArray.join('.'), obj, true);
     }
 
     fn(objAtPath, lastPath);
