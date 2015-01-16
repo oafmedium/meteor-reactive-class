@@ -150,7 +150,7 @@ class Post extends ReactiveClass(PostCollection)
 
   getName: () ->
     return this.name
-Post.setuptransform()
+Post.setupTransform()
 ```
 
 ## Interacting With Mongo
