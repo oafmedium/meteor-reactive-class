@@ -136,7 +136,7 @@ ReactivePostWithComments.setupTransform();
 
 ### Coffeescript based inheritance
 Easy coffeescript extension that fits well with the syntax. Note that you must
-call `ClassName.initiliaze.call(@)` during the constructor, or the
+call `ClassName.initialize.call(@)` during the constructor, or the
 ReactiveClass will not correctly get its fields. You must also call
 `.setupTransform()` manually, if you want automatic database query transforms.
 
@@ -146,7 +146,7 @@ class Post extends ReactiveClass(PostCollection)
   constructor: (name) ->
     console.log "Constructing post with name: " + name
     this.name = name
-    Post.initiliaze.call(@) # Important! Not optional!
+    Post.initialize.call(@) # Important! Not optional!
 
   getName: () ->
     return this.name
